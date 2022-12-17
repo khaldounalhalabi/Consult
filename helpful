@@ -1,0 +1,8 @@
+php artisan migrate:fresh
+php artisan db:seed UserSeeder
+php artisan db:seed CategorySeeder
+php artisan db:seed ExpertSeeder
+php artisan db:seed CommentReviewSeeder
+php artisan db:seed FavoriteSeeder
+php artisan db:seed OpenedTimeSeeder
+php artisan db:seed AppointmentSeeder
