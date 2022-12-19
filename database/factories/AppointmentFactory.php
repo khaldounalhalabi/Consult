@@ -17,10 +17,13 @@ class AppointmentFactory extends Factory
     public function definition()
     {
         return [
-            'expert_id' => $this->faker->numberBetween(1 , 4),
-            'user_id' => $this->faker->numberBetween(1 , 4),
+            'expert_id' => $this->faker->numberBetween(1, 4),
+            'user_id' => $this->faker->numberBetween(1, 4),
             'appointment_date' => $this->faker->dateTimeThisMonth()->format('Y-m-d'),
             'appointment_time' => $this->faker->time('h:i:s'),
+            'status' => implode($this->faker->randomElements([
+                'waiting', 'done'
+            ]))
         ];
     }
 }

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('country') ;
             $table->string('city') ;
             $table->string('street') ;
+            $table->float('price')->default(0) ;
             $table->float('wallet')->default(0) ;
 
             $table->unsignedBigInteger('category_id') ;

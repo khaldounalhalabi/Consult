@@ -6,3 +6,4 @@ php artisan db:seed CommentReviewSeeder
 php artisan db:seed FavoriteSeeder
 php artisan db:seed OpenedTimeSeeder
 php artisan db:seed AppointmentSeeder
+php artisan db:seed MessageSeeder

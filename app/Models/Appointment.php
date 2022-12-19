@@ -16,6 +16,7 @@ class Appointment extends Model
         'user_id',
         'appointment_date',
         'appointment_time',
+        'status' ,
     ];
 
     public function expert()

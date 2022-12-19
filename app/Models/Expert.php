@@ -35,6 +35,7 @@ class Expert extends Authenticatable implements JWTSubject
         'wallet',
         'opened_time_id',
         'category_id',
+        'price' ,
     ];
 
     public function opened_time()
@@ -60,6 +61,12 @@ class Expert extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Appointment::class);
     }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

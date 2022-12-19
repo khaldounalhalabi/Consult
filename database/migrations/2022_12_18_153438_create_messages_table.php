@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('appointments', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('expert_id') ;
-            $table->foreign('expert_id')->references('id')->on('experts')->onDelete('cascade') ;
-
+            $table->string('body') ;
             $table->unsignedBigInteger('user_id') ;
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade') ;
-
-            $table->date('appointment_date') ;
-            $table->time('appointment_time') ;
-            $table->enum('status' , ['waiting' , 'done'])->default('waiting') ;
+            $table->enum('from' , ['user' , 'expert']) ;
+            $table->unsignedBigInteger('expert_id') ;
+            $table->foreign('expert_id')->references('id')->on('experts')->onDelete('cascade') ;
 
             $table->timestamps();
         });
@@ -36,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appointments');
+        Schema::dropIfExists('messages');
     }
 };

@@ -21,7 +21,7 @@ class ExpertFactory extends Factory
             'email' => $this->faker->email() ,
             'password' => bcrypt('123456') ,
             'photo' => $this->faker->image(
-                'C:\xampp\htdocs\Fatima\storage\app\public',
+                'C:\xampp\htdocs\consult\storage\app\public',
                 640,
                 480,
                 'animals',
