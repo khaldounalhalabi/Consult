@@ -39,6 +39,8 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('user/favorite', 'UserController@indexFavorite');
     Route::post('user/favorite/add/{expert_id}', 'UserController@addToFavorite');
     Route::delete('user/favorite/delete/{expert_id}', 'UserController@removeFavorite');
+    Route::get('user/appointments/get/{expert_id}', 'UserController@getAppointments');
+    Route::post('user/appointment/add/{expert_id}', 'UserController@setAppointment');
 
 
     Route::post('/expert/register', 'ExpertController@register');

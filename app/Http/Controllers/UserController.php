@@ -9,6 +9,8 @@ use App\Models\Expert;
 use App\Models\Favorite;
 use App\Models\Message;
 use App\Models\User;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -360,6 +362,156 @@ class UserController extends Controller
         ]);
     }
 
+    // public function setAppointment(Request $request, $expert_id)
+    // {
+    //     $rules = [
+    //         'date' => 'date|required',
+    //         'time' => 'date_format:H:i|required',
+    //     ];
+
+    //     $validator = Validator::make($request->only('date', 'time'), $rules);
+    //     if ($validator->fails()) {
+    //         return response()->json([
+    //             'error' => $validator->errors(),
+    //         ]);
+    //     }
+
+    //     $expert = Expert::find($expert_id);
+    //     $date = Carbon::create($request->date);
+    //     $time = Carbon::create($request->time) ;
+    //     $day = $date->format('l');
+    //     // dd($time) ;
+
+    //     if ($day == 'Saturday') {
+    //         if (
+    //             $time >= $expert->opened_time->saturday_from &&
+    //             $time <= $expert->opened_time->saturday_to
+    //         ) {
+    //             $appointment = new Appointment ;
+    //             $appointment->expert_id = $expert_id ;
+    //             $appointment->user_id = Auth::guard('userapi')->user()->id ;
+    //             $appointment->date = $request->date ;
+    //             $appointment->time = $time ;
+    //             $appointment->save() ;
+
+    //             return response()->json([
+    //                 'message' => 'appointment booked successfully' ,
+    //                 'appointment' => $appointment ,
+    //             ]) ;
+    //         }
+    //     }
+    //     if ($day == 'Sunday') {
+    //         if (
+    //             $time >= $expert->opened_time->sunday_from &&
+    //             $time <= $expert->opened_time->sunday_to
+    //         ) {
+    //             $appointment = new Appointment;
+    //             $appointment->expert_id = $expert_id;
+    //             $appointment->user_id = Auth::guard('userapi')->user()->id;
+    //             $appointment->date = $request->date;
+    //             $appointment->time = $time;
+    //             $appointment->save() ;
+
+    //             return response()->json([
+    //                 'message' => 'appointment booked successfully' ,
+    //                 'appointment' => $appointment ,
+    //             ]) ;
+    //         }
+    //     }
+    //     if ($day == 'Monday') {
+    //         if (
+    //             $time >= $expert->opened_time->monday_from &&
+    //             $time <= $expert->opened_time->monday_to
+    //         ) {
+    //             $appointment = new Appointment;
+    //             $appointment->expert_id = $expert_id;
+    //             $appointment->user_id = Auth::guard('userapi')->user()->id;
+    //             $appointment->date = $request->date;
+    //             $appointment->time = $time;
+    //             $appointment->save();
+
+    //             return response()->json([
+    //                 'message' => 'appointment booked successfully' ,
+    //                 'appointment' => $appointment ,
+    //             ]) ;
+    //         }
+    //     }
+    //     if ($day == 'Tuesday') {
+    //         if (
+    //             $time >= $expert->opened_time->tuesday_from &&
+    //             $time <= $expert->opened_time->tuesday_to
+    //         ) {
+    //             $appointment = new Appointment;
+    //             $appointment->expert_id = $expert_id;
+    //             $appointment->user_id = Auth::guard('userapi')->user()->id;
+    //             $appointment->date = $request->date;
+    //             $appointment->time = $time;
+    //             $appointment->save();
+
+    //             return response()->json([
+    //                 'message' => 'appointment booked successfully' ,
+    //                 'appointment' => $appointment ,
+    //             ]) ;
+    //         }
+    //     }
+    //     if ($day == 'Wednesday') {
+    //         if (
+    //             $time >= $expert->opened_time->wednesday_from &&
+    //             $time <= $expert->opened_time->wednesday_to
+    //         ) {
+    //             $appointment = new Appointment;
+    //             $appointment->expert_id = $expert_id;
+    //             $appointment->user_id = Auth::guard('userapi')->user()->id;
+    //             $appointment->date = $request->date;
+    //             $appointment->time = $time;
+    //             $appointment->save();
+
+    //             return response()->json([
+    //                 'message' => 'appointment booked successfully' ,
+    //                 'appointment' => $appointment ,
+    //             ]) ;
+    //         }
+    //     }
+    //     if ($day == 'Thursday') {
+    //         if (
+    //             $time >= $expert->opened_time->thursday_from &&
+    //             $time <= $expert->opened_time->thursday_to
+    //         ) {
+    //             $appointment = new Appointment;
+    //             $appointment->expert_id = $expert_id;
+    //             $appointment->user_id = Auth::guard('userapi')->user()->id;
+    //             $appointment->date = $request->date;
+    //             $appointment->time = $time;
+    //             $appointment->save();
+
+    //             return response()->json([
+    //                 'message' => 'appointment booked successfully' ,
+    //                 'appointment' => $appointment ,
+    //             ]) ;
+    //         }
+    //     }
+    //     if ($day == 'Friday') {
+    //         if (
+    //             $time->between( $expert->opened_time->friday_from ,$expert->opened_time->friday_to)
+    //         ) {
+    //             $appointment = new Appointment;
+    //             $appointment->expert_id = $expert_id;
+    //             $appointment->user_id = Auth::guard('userapi')->user()->id;
+    //             $appointment->date = $request->date;
+    //             $appointment->time = $time;
+    //             $appointment->save();
+
+    //             return response()->json([
+    //                 'message' => 'appointment booked successfully' ,
+    //                 'appointment' => $appointment ,
+    //             ]) ;
+    //         }
+    //     }
+    //     return response()->json([
+    //         'message' => 'ask for another time this time is not available'
+    //     ]) ;
+    // }
+
     public function setAppointment(Request $request, $expert_id)
     {
         $rules = [
@@ -373,136 +525,16 @@ class UserController extends Controller
                 'error' => $validator->errors(),
             ]);
         }
+        $appointment = new Appointment;
+        $appointment->user_id = Auth::guard('userapi')->user()->id;
+        $appointment->expert_id = $expert_id;
+        $appointment->date = $request->date;
+        $appointment->time = $request->time;
+        $appointment->save();
 
-        $expert = Expert::find($expert_id);
-        $date = $request->date;
-        $day = $date->format('l');
-
-        if ($day == 'Saturday') {
-            if (
-                $request->time >= $expert->opened_time->saturday_from &&
-                $request->time <= $expert->opened_time->saturday_to
-            ) {
-                $appointment = new Appointment ;
-                $appointment->expert_id = $expert_id ;
-                $appointment->user_id = Auth::guard('userapi')->user()->id ;
-                $appointment->date = $request->date ;
-                $appointment->time = $request->time ;
-                $appointment->save() ;
-
-                return response()->json([
-                    'message' => 'appointment booked successfully' ,
-                    'appointment' => $appointment ,
-                ]) ;
-            }
-        }
-        if ($day == 'Sunday') {
-            if (
-                $request->time >= $expert->opened_time->sunday_from &&
-                $request->time <= $expert->opened_time->sunday_to
-            ) {
-                $appointment = new Appointment;
-                $appointment->expert_id = $expert_id;
-                $appointment->user_id = Auth::guard('userapi')->user()->id;
-                $appointment->date = $request->date;
-                $appointment->time = $request->time;
-                $appointment->save() ;
-
-                return response()->json([
-                    'message' => 'appointment booked successfully' ,
-                    'appointment' => $appointment ,
-                ]) ;
-            }
-        }
-        if ($day == 'Monday') {
-            if (
-                $request->time >= $expert->opened_time->monday_from &&
-                $request->time <= $expert->opened_time->monday_to
-            ) {
-                $appointment = new Appointment;
-                $appointment->expert_id = $expert_id;
-                $appointment->user_id = Auth::guard('userapi')->user()->id;
-                $appointment->date = $request->date;
-                $appointment->time = $request->time;
-                $appointment->save();
-
-                return response()->json([
-                    'message' => 'appointment booked successfully' ,
-                    'appointment' => $appointment ,
-                ]) ;
-            }
-        }
-        if ($day == 'Tuesday') {
-            if (
-                $request->time >= $expert->opened_time->tuesday_from &&
-                $request->time <= $expert->opened_time->tuesday_to
-            ) {
-                $appointment = new Appointment;
-                $appointment->expert_id = $expert_id;
-                $appointment->user_id = Auth::guard('userapi')->user()->id;
-                $appointment->date = $request->date;
-                $appointment->time = $request->time;
-                $appointment->save();
-
-                return response()->json([
-                    'message' => 'appointment booked successfully' ,
-                    'appointment' => $appointment ,
-                ]) ;
-            }
-        }
-        if ($day == 'Wednesday') {
-            if (
-                $request->time >= $expert->opened_time->wednesday_from &&
-                $request->time <= $expert->opened_time->wednesday_to
-            ) {
-                $appointment = new Appointment;
-                $appointment->expert_id = $expert_id;
-                $appointment->user_id = Auth::guard('userapi')->user()->id;
-                $appointment->date = $request->date;
-                $appointment->time = $request->time;
-                $appointment->save();
-
-                return response()->json([
-                    'message' => 'appointment booked successfully' ,
-                    'appointment' => $appointment ,
-                ]) ;
-            }
-        }
-        if ($day == 'Thursday') {
-            if (
-                $request->time >= $expert->opened_time->thursday_from &&
-                $request->time <= $expert->opened_time->thursday_to
-            ) {
-                $appointment = new Appointment;
-                $appointment->expert_id = $expert_id;
-                $appointment->user_id = Auth::guard('userapi')->user()->id;
-                $appointment->date = $request->date;
-                $appointment->time = $request->time;
-                $appointment->save();
-
-                return response()->json([
-                    'message' => 'appointment booked successfully' ,
-                    'appointment' => $appointment ,
-                ]) ;
-            }
-        }
-        if ($day == 'Friday') {
-            if (
-                $request->time >= $expert->opened_time->friday_from &&
-                $request->time <= $expert->opened_time->friday_to
-            ) {
-                $appointment = new Appointment;
-                $appointment->expert_id = $expert_id;
-                $appointment->user_id = Auth::guard('userapi')->user()->id;
-                $appointment->date = $request->date;
-                $appointment->time = $request->time;
-                $appointment->save();
-
-                return response()->json([
-                    'message' => 'appointment booked successfully' ,
-                    'appointment' => $appointment ,
-                ]) ;
-            }
-        }
+        return response()->json([
+            'message' => 'success' ,
+            'appointment' => $appointment ,
+        ]) ;
     }
 }

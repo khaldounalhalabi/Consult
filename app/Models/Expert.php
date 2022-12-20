@@ -40,7 +40,7 @@ class Expert extends Authenticatable implements JWTSubject
 
     public function opened_time()
     {
-        return $this->hasOne(OpenTime::class);
+        return $this->hasOne(OpenedTime::class);
     }
 
     public function category()
