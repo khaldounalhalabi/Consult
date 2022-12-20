@@ -7,6 +7,7 @@ use App\Models\CommentReview;
 use App\Models\Expert;
 use App\Models\Message;
 use App\Models\OpenedTime;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -123,8 +124,8 @@ class ExpertController extends Controller
             $opened_time->friday_from = $request->friday_from;
             $opened_time->friday_to = $request->friday_to;
 
-            $opened_time->expert_id = $expert->id ;
-            $opened_time->save() ;
+            $opened_time->expert_id = $expert->id;
+            $opened_time->save();
 
 
             $token = Auth::guard('expertapi')->attempt([
@@ -161,12 +162,145 @@ class ExpertController extends Controller
     public function details()
     {
         $expert = Auth::guard('expertapi')->user();
-        $opened_time = OpenedTime::where('expert_id' , $expert->id)->get() ;
+        $opened_time = OpenedTime::where('expert_id', $expert->id)->get();
         return response()->json([
             "message" => 'success',
             "expert" => $expert,
-            'work time' => $opened_time ,
+            'work time' => $opened_time,
         ]);
+    }
+
+    public function editDetails(Request $request)
+    {
+        $rules = [
+            'name' => 'string|min:3|max:255',
+            // 'photo' => |image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'email' => 'email|string|min:3|unique:experts',
+            'experience' => 'min:3',
+            'phone' => 'string',
+            'mobile' => 'string|nullable',
+            'country' => 'string',
+            'city' => 'string',
+            'street' => 'string',
+            'category_id' => 'integer',
+            'price' => 'numeric',
+            'saturday_from' => 'nullable|date_format:h:i',
+            'saturday_to' => 'nullable|date_format:h:i',
+            'sunday_from' => 'nullable|date_format:h:i',
+            'sunday_to' => 'nullable|date_format:h:i',
+            'monday_from' => 'nullable|date_format:h:i',
+            'monday_to' => 'nullable|date_format:h:i',
+            'tuesday_from' => 'nullable|date_format:h:i',
+            'tuesday_to' => 'nullable|date_format:h:i',
+            'wednesday_from' => 'nullable|date_format:h:i',
+            'wednesday_to' => 'nullable|date_format:h:i',
+            'thursday_from' => 'nullable|date_format:h:i',
+            'thursday_to' => 'nullable|date_format:h:i',
+            'friday_from' => 'nullable|date_format:h:i',
+            'friday_to' => 'nullable|date_format:h:i',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()]);
+        }
+
+        try {
+            $expert = Expert::find(Auth::guard('expertapi')->user()->id)->with('category')->first();
+            if (isset($request->name)) {
+                $expert->name = $request->name;
+            }
+            if (isset($request->email)) {
+                $expert->email = $request->email;
+            }
+            if (isset($request->experience)) {
+                $expert->experience = $request->experience;
+            }
+            if (isset($request->phone)) {
+                $expert->phone = $request->phone;
+            }
+            if (isset($request->mobile)) {
+                $expert->mobile = $request->mobile;
+            }
+            if (isset($request->country)) {
+                $expert->country = $request->country;
+            }
+            if (isset($request->city)) {
+                $expert->city = $request->city;
+            }
+            if (isset($request->street)) {
+                $expert->street = $request->street;
+            }
+            if (isset($request->category_id)) {
+                $expert->category_id = $request->category_id;
+            }
+
+            if ($request->hasFile('image') != null) {
+                $destenation_path = 'patients/images';
+                $image_name = $request->file('image')->getClientOriginalName();
+                $expert->image = $destenation_path . '/' . $image_name;
+                $path = $request->file('image')->storeAs('public/' . $destenation_path, $image_name);
+            }
+
+            $expert->save();
+
+            $opened_time = OpenedTime::where('expert_id', $expert->id)->first();
+            if (isset($request->saturday_from)) {
+                $opened_time->saturday_from = $request->saturday_from;
+            }
+            if (isset($request->saturday_to)) {
+                $opened_time->saturday_to = $request->saturday_to;
+            }
+            if (isset($request->sunday_from)) {
+                $opened_time->sunday_from = $request->sunday_from;
+            }
+            if (isset($request->sunday_to)) {
+                $opened_time->sunday_to = $request->sunday_to;
+            }
+            if (isset($request->monday_from)) {
+                $opened_time->monday_from = $request->monday_from;
+            }
+            if (isset($request->monday_to)) {
+                $opened_time->monday_to = $request->monday_to;
+            }
+            if (isset($request->tuesday_from)) {
+                $opened_time->tuesday_from = $request->tuesday_from;
+            }
+            if (isset($request->tuesday_to)) {
+                $opened_time->tuesday_to = $request->tuesday_to;
+            }
+            if (isset($request->wednesday_from)) {
+                $opened_time->wednesday_from = $request->wednesday_from;
+            }
+            if (isset($request->wednesday_to)) {
+                $opened_time->wednesday_to = $request->wednesday_to;
+            }
+            if (isset($request->thursday_from)) {
+                $opened_time->thursday_from = $request->thursday_from;
+            }
+            if (isset($request->thursday_to)) {
+                $opened_time->thursday_to = $request->thursday_to;
+            }
+            if (isset($request->friday_from)) {
+                $opened_time->friday_from = $request->friday_from;
+            }
+            if (isset($request->friday_to)) {
+                $opened_time->friday_to = $request->friday_to;
+            }
+
+            $opened_time->save();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Expert created successfully',
+                'expert' => $expert,
+                // 'category' => $expert->category
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'there is been an error',
+                'error message' => $e->getMessage()
+            ]);
+        }
     }
 
     public function getAppointments()
@@ -203,6 +337,11 @@ class ExpertController extends Controller
         $appointment = Appointment::find($appointment_id);
         $appointment->status = 'done';
         $appointment->save();
+        $expert = Auth::guard('expertapi')->user() ;
+        $expert->wallet = $expert->wallet + $expert->price ;
+
+        $user = User::find($appointment->user_id) ;
+        $user->wallet = $user->wallet - $expert->price ;
         return response()->json([
             'message' => 'success',
         ]);

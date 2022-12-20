@@ -14,8 +14,8 @@ class Appointment extends Model
     protected $fillable = [
         'expert_id',
         'user_id',
-        'appointment_date',
-        'appointment_time',
+        'date',
+        'time',
         'status' ,
     ];
 

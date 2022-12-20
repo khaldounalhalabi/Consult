@@ -25,6 +25,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('/user/login', 'UserController@login');
     Route::post('/user/logout', 'UserController@logout');
     Route::post('/user/details', 'UserController@details');
+    Route::post('user/edit', 'UserController@editDetails');
     Route::get('/user/categories', 'UserController@indexCategory');
     Route::get('/user/experts/{id}', 'UserController@indexExperts');
     Route::post('/user/search', 'UserController@search');
@@ -34,14 +35,17 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::get ('user/comments_reviews/{expert_id}', 'UserController@getCommentsAndReviews');
     Route::post('user/comments_reviews/add/{expert_id}', 'UserController@comment');
     Route::post('user/comments_reviews/avg/{expert_id}', 'UserController@totalRate');
+    Route::delete('user/comment_reviews/delete/{comment_id}', 'UserController@deleteComment');
     Route::post('user/favorite', 'UserController@indexFavorite');
     Route::post('user/favorite/add/{expert_id}', 'UserController@addToFavorite');
+    Route::delete('user/favorite/delete/{expert_id}', 'UserController@removeFavorite');
 
 
     Route::post('/expert/register', 'ExpertController@register');
     Route::post('/expert/login', 'ExpertController@login');
     Route::post('/expert/logout', 'ExpertController@logout');
     Route::post('/expert/details', 'ExpertController@details');
+    Route::post('expert/edit', 'ExpertController@editDetails');
     Route::get('/expert/appointments', 'ExpertController@getAppointments');
     Route::get('/expert/appointment_details/{id}', 'ExpertController@getAppointmentDetails');
     Route::get('/expert/messages/{user_id}', 'ExpertController@indexMessages');

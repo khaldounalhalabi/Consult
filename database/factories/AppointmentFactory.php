@@ -19,8 +19,8 @@ class AppointmentFactory extends Factory
         return [
             'expert_id' => $this->faker->numberBetween(1, 4),
             'user_id' => $this->faker->numberBetween(1, 4),
-            'appointment_date' => $this->faker->dateTimeThisMonth()->format('Y-m-d'),
-            'appointment_time' => $this->faker->time('h:i:s'),
+            'date' => $this->faker->dateTimeThisMonth()->format('Y-m-d'),
+            'time' => $this->faker->time('h:i:s'),
             'status' => implode($this->faker->randomElements([
                 'waiting', 'done'
             ]))

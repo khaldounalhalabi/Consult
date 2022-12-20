@@ -21,8 +21,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id') ;
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade') ;
 
-            $table->date('appointment_date') ;
-            $table->time('appointment_time') ;
+            $table->date('date') ;
+            $table->time('time') ;
             $table->enum('status' , ['waiting' , 'done'])->default('waiting') ;
 
             $table->timestamps();
