@@ -1,0 +1,1337 @@
+{
+	"info": {
+		"_postman_id": "6c6148df-c35d-4917-946a-887090f3b399",
+		"name": "Consultation Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18516967"
+	},
+	"item": [
+		{
+			"name": "Authentication API",
+			"item": [
+				{
+					"name": "User Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://consult.local/api/user/register?name=fatima&last_name=fatima&email=fatima@email.com&password=123456&phone=09631111111111&mobile=0118888888",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"register"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "fatima"
+								},
+								{
+									"key": "last_name",
+									"value": "fatima"
+								},
+								{
+									"key": "email",
+									"value": "fatima@email.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								},
+								{
+									"key": "phone",
+									"value": "09631111111111"
+								},
+								{
+									"key": "mobile",
+									"value": "0118888888"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://consult.local/api/user/login?email=fatima@email.com&password=1234567",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "fatima@email.com"
+								},
+								{
+									"key": "password",
+									"value": "1234567"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTM3NjU2NiwiZXhwIjoxNjcxMzgwMTY2LCJuYmYiOjE2NzEzNzY1NjYsImp0aSI6IkZYUXpaOWF2aGdZVEhkNlIiLCJzdWIiOiI2IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.AUPjDWs8_toFgVp5ZYL8yXnKSv7PFroOyUQIx8fJKzg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/logout",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Details",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTM3NjkxNCwiZXhwIjoxNjcxMzgwNTE0LCJuYmYiOjE2NzEzNzY5MTQsImp0aSI6InJKMFoyajY5UjNTMkhrcE8iLCJzdWIiOiI2IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.MJywpABqu3tmIu_Ac9jPLVBDUF4dZKVmmVxVpgVUF1c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/details",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User Details",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTUzNDQ2OSwiZXhwIjoxNjcxNTM4MDY5LCJuYmYiOjE2NzE1MzQ0NjksImp0aSI6Ikg1OUQ0ektsZ3lxeEs0SVciLCJzdWIiOiI1IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.XuS-TeNyqq8qbiw1bruRdFmpLmDMa7o-wmu6SpstI-s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/edit?name=fatimaaa&email=fatima@email.com&phone=096355555&mobile=0118888888",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"edit"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "fatimaaa"
+								},
+								{
+									"key": "email",
+									"value": "fatima@email.com"
+								},
+								{
+									"key": "phone",
+									"value": "096355555"
+								},
+								{
+									"key": "mobile",
+									"value": "0118888888"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expert Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/expert/register?name=fatima&email=aiham@email.com&password=123456&experience=lorem lorem lorem&phone=09631111111111&mobile=0118888888&country=Syria&city=Damascus&street=Damascus&category_id=1&photo=C:\\Users\\Khaldoun Alhalabi\\Downloads\\Video\\[EgyBest].The.Swimmers.2022.WEB-DL.720p.x264.jpg&saturday_from=10:00&saturday_to=05:00&sunday_from=10:00&sunday_to=05:00&monday_from=10:00&monday_to=05:00&tuesday_from=10:00&tuesday_to=05:00&wednesday_from=10:00&wednesday_to=05:00&thursday_from=10:00&thursday_to=05:00&friday_from=10:00&friday_to=05:00",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"expert",
+								"register"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "fatima"
+								},
+								{
+									"key": "email",
+									"value": "aiham@email.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								},
+								{
+									"key": "experience",
+									"value": "lorem lorem lorem"
+								},
+								{
+									"key": "phone",
+									"value": "09631111111111"
+								},
+								{
+									"key": "mobile",
+									"value": "0118888888"
+								},
+								{
+									"key": "country",
+									"value": "Syria"
+								},
+								{
+									"key": "city",
+									"value": "Damascus"
+								},
+								{
+									"key": "street",
+									"value": "Damascus"
+								},
+								{
+									"key": "category_id",
+									"value": "1"
+								},
+								{
+									"key": "photo",
+									"value": "C:\\Users\\Khaldoun Alhalabi\\Downloads\\Video\\[EgyBest].The.Swimmers.2022.WEB-DL.720p.x264.jpg"
+								},
+								{
+									"key": "saturday_from",
+									"value": "10:00"
+								},
+								{
+									"key": "saturday_to",
+									"value": "05:00"
+								},
+								{
+									"key": "sunday_from",
+									"value": "10:00"
+								},
+								{
+									"key": "sunday_to",
+									"value": "05:00"
+								},
+								{
+									"key": "monday_from",
+									"value": "10:00"
+								},
+								{
+									"key": "monday_to",
+									"value": "05:00"
+								},
+								{
+									"key": "tuesday_from",
+									"value": "10:00"
+								},
+								{
+									"key": "tuesday_to",
+									"value": "05:00"
+								},
+								{
+									"key": "wednesday_from",
+									"value": "10:00"
+								},
+								{
+									"key": "wednesday_to",
+									"value": "05:00"
+								},
+								{
+									"key": "thursday_from",
+									"value": "10:00"
+								},
+								{
+									"key": "thursday_to",
+									"value": "05:00"
+								},
+								{
+									"key": "friday_from",
+									"value": "10:00"
+								},
+								{
+									"key": "friday_to",
+									"value": "05:00"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expert Login",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/expert/login?email=ryan.johnathan@hotmail.com&password=123456",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"expert",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "ryan.johnathan@hotmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expert Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxMzc2Mjk5LCJleHAiOjE2NzEzNzk4OTksIm5iZiI6MTY3MTM3NjI5OSwianRpIjoiN0tlVDdyZDdoUWxUZGVNOCIsInN1YiI6IjEiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.M6yIbRV5dz9kiFpalz3myYhDoD7jH0yC4-yq72CrUEY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/expert/logout",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"expert",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expert Details",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L3JlZ2lzdGVyIiwiaWF0IjoxNjcxNDY5MTQ2LCJleHAiOjE2NzE0NzI3NDYsIm5iZiI6MTY3MTQ2OTE0NiwianRpIjoieEFXWVY1QUVXTWR0TnNRZCIsInN1YiI6IjUiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.z6mi3OTzzLcjNlEoePCytcSQ65AN3TXpNK-ajawfJ1A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/expert/details",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"expert",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expert Edit Details",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxNTM1NjgzLCJleHAiOjE2NzE1MzkyODMsIm5iZiI6MTY3MTUzNTY4MywianRpIjoiUEhDeHBQR2NiNEY2OENGZyIsInN1YiI6IjEiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.9P6CV1q7JRcNQDy-Hg9vwS04IlCmVU8rmDQxQWPhSn8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/expert/edit?name=fatima&experience=lorem lorem lorem&phone=09631111111111&mobile=0118888888&country=Syria&city=Damascus&street=Damascus&category_id=1&photo=C:\\Users\\Khaldoun Alhalabi\\Downloads\\Video\\[EgyBest].The.Swimmers.2022.WEB-DL.720p.x264.jpg&saturday_from=10:00&saturday_to=05:00&sunday_from=10:00&sunday_to=05:00&monday_from=05:00&monday_to=10:00&tuesday_from&tuesday_to&wednesday_from&wednesday_to&thursday_from&thursday_to&friday_from&friday_to",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"expert",
+								"edit"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "fatima"
+								},
+								{
+									"key": "email",
+									"value": "khaldoun@email.com",
+									"disabled": true
+								},
+								{
+									"key": "experience",
+									"value": "lorem lorem lorem"
+								},
+								{
+									"key": "phone",
+									"value": "09631111111111"
+								},
+								{
+									"key": "mobile",
+									"value": "0118888888"
+								},
+								{
+									"key": "country",
+									"value": "Syria"
+								},
+								{
+									"key": "city",
+									"value": "Damascus"
+								},
+								{
+									"key": "street",
+									"value": "Damascus"
+								},
+								{
+									"key": "category_id",
+									"value": "1"
+								},
+								{
+									"key": "photo",
+									"value": "C:\\Users\\Khaldoun Alhalabi\\Downloads\\Video\\[EgyBest].The.Swimmers.2022.WEB-DL.720p.x264.jpg"
+								},
+								{
+									"key": "saturday_from",
+									"value": "10:00"
+								},
+								{
+									"key": "saturday_to",
+									"value": "05:00"
+								},
+								{
+									"key": "sunday_from",
+									"value": "10:00"
+								},
+								{
+									"key": "sunday_to",
+									"value": "05:00"
+								},
+								{
+									"key": "monday_from",
+									"value": "05:00"
+								},
+								{
+									"key": "monday_to",
+									"value": "10:00"
+								},
+								{
+									"key": "tuesday_from",
+									"value": null
+								},
+								{
+									"key": "tuesday_to",
+									"value": null
+								},
+								{
+									"key": "wednesday_from",
+									"value": null
+								},
+								{
+									"key": "wednesday_to",
+									"value": null
+								},
+								{
+									"key": "thursday_from",
+									"value": null
+								},
+								{
+									"key": "thursday_to",
+									"value": null
+								},
+								{
+									"key": "friday_from",
+									"value": null
+								},
+								{
+									"key": "friday_to",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Acts Based API",
+			"item": [
+				{
+					"name": "search by name",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://consult.local/api/user/search?name=Giovani Goodwin",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Giovani Goodwin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all categories",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxMjg1NjcyLCJleHAiOjE2NzEyODkyNzIsIm5iZiI6MTY3MTI4NTY3MiwianRpIjoiUWllMHlDSE1mNEp5bkVncSIsInN1YiI6IjUiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.NKTBb-xgvGrG81Wa6JuAEW1rMJis4XHbMs_7sDSy0tU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/categories",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "expert details by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxMjg1NjcyLCJleHAiOjE2NzEyODkyNzIsIm5iZiI6MTY3MTI4NTY3MiwianRpIjoiUWllMHlDSE1mNEp5bkVncSIsInN1YiI6IjUiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.NKTBb-xgvGrG81Wa6JuAEW1rMJis4XHbMs_7sDSy0tU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/expert_deatails/2",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"expert_deatails",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Index experts of specific category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://consult.local/api/user/experts/5",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"experts",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get messages between expert",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTM3OTk1NiwiZXhwIjoxNjcxMzgzNTU2LCJuYmYiOjE2NzEzNzk5NTYsImp0aSI6ImdkclIwdnR5MzZzY2duWHQiLCJzdWIiOiI2IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9._G_g6aXG3u-T-qKCvV6I7kv_elGWphja1W47OsEQW-Y",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/messages/1",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"messages",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send a message to an expert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTQ1MDU4NywiZXhwIjoxNjcxNDU0MTg3LCJuYmYiOjE2NzE0NTA1ODcsImp0aSI6ImliU0F4M1JIVFlsSk52REgiLCJzdWIiOiI2IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.elRsxsTl6BdRjrDl-Em9eWIYVSW5plUe9VaFUtKumHs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/messages/send/1?message=Hello",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"messages",
+								"send",
+								"1"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "Hello"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all comments and rating of an expert by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTQ1MDU4NywiZXhwIjoxNjcxNDU0MTg3LCJuYmYiOjE2NzE0NTA1ODcsImp0aSI6ImliU0F4M1JIVFlsSk52REgiLCJzdWIiOiI2IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.elRsxsTl6BdRjrDl-Em9eWIYVSW5plUe9VaFUtKumHs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/comments_reviews/1",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"comments_reviews",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comment or rate an expert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTUzNjMyMywiZXhwIjoxNjcxNTM5OTIzLCJuYmYiOjE2NzE1MzYzMjMsImp0aSI6IkRvS2JmSGZPS0djMXh4a2wiLCJzdWIiOiI1IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.LCNH8569QUEJ63TnG5iDXlwiQ18KraK6SrD1rqWZFH4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/comments_reviews/add/1?comment=goood&rate=2",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"comments_reviews",
+								"add",
+								"1"
+							],
+							"query": [
+								{
+									"key": "comment",
+									"value": "goood"
+								},
+								{
+									"key": "rate",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a comment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTUzNjMyMywiZXhwIjoxNjcxNTM5OTIzLCJuYmYiOjE2NzE1MzYzMjMsImp0aSI6IkRvS2JmSGZPS0djMXh4a2wiLCJzdWIiOiI1IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.LCNH8569QUEJ63TnG5iDXlwiQ18KraK6SrD1rqWZFH4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/comment_reviews/delete/49",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"comment_reviews",
+								"delete",
+								"49"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "average rate to an expert by id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTQ1MDU4NywiZXhwIjoxNjcxNDU0MTg3LCJuYmYiOjE2NzE0NTA1ODcsImp0aSI6ImliU0F4M1JIVFlsSk52REgiLCJzdWIiOiI2IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.elRsxsTl6BdRjrDl-Em9eWIYVSW5plUe9VaFUtKumHs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/comments_reviews/avg/1",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"comments_reviews",
+								"avg",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add to favorite",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTUzNzA1NiwiZXhwIjoxNjcxNTQwNjU2LCJuYmYiOjE2NzE1MzcwNTYsImp0aSI6Ijg3eUJFTWxkYzJPZHpTQWsiLCJzdWIiOiI1IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.fNQNUw6e5ZF8zo2msvFdcgek5R4JIbuoWaUhXTCzT-w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/favorite/add/1",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"favorite",
+								"add",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete expert from favorite",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTUzNzA1NiwiZXhwIjoxNjcxNTQwNjU2LCJuYmYiOjE2NzE1MzcwNTYsImp0aSI6Ijg3eUJFTWxkYzJPZHpTQWsiLCJzdWIiOiI1IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.fNQNUw6e5ZF8zo2msvFdcgek5R4JIbuoWaUhXTCzT-w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/favorite/delete/1",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"favorite",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get favorite list",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTUzNzA1NiwiZXhwIjoxNjcxNTQwNjU2LCJuYmYiOjE2NzE1MzcwNTYsImp0aSI6Ijg3eUJFTWxkYzJPZHpTQWsiLCJzdWIiOiI1IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.fNQNUw6e5ZF8zo2msvFdcgek5R4JIbuoWaUhXTCzT-w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/favorite",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"favorite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get expert appointment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://consult.local/api/user/appointments/get/1",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"appointments",
+								"get",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book an appointment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9yZWdpc3RlciIsImlhdCI6MTY3MTU0NTQzMCwiZXhwIjoxNjcxNTQ5MDMwLCJuYmYiOjE2NzE1NDU0MzAsImp0aSI6IkhMTmRvOFVEN3p5aG9YZkciLCJzdWIiOiI1IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.ikuUJywuQnpToVZPURN_u7J9ccx5yHO7uGTdMNG7Quk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/user/appointment/add/5?date=2022/12/30&time=10:30",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"user",
+								"appointment",
+								"add",
+								"5"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022/12/30"
+								},
+								{
+									"key": "time",
+									"value": "10:30"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Expert Acts Based API",
+			"item": [
+				{
+					"name": "get expert appointments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxNDY4MTAzLCJleHAiOjE2NzE0NzE3MDMsIm5iZiI6MTY3MTQ2ODEwMywianRpIjoicGI3MVlmRE1mV015V0VxTSIsInN1YiI6IjEiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.mTBmU-BAGG9NSky526rDBMjjRVYS7x2gu3Ep_mdYF1c",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/expert/appointments",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"expert",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get appointment details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxMjk1OTE5LCJleHAiOjE2NzEyOTk1MTksIm5iZiI6MTY3MTI5NTkxOSwianRpIjoiMERxREZaTFYzUGliYnlnbyIsInN1YiI6IjEiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.wefWT2Fn0II9iJ4j4Ksi1aovXfmIeWRXnqETBbBWhmo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/expert/appointment_details/7",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"expert",
+								"appointment_details",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index messages with user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxMzgwNDM5LCJleHAiOjE2NzEzODQwMzksIm5iZiI6MTY3MTM4MDQzOSwianRpIjoiTW8wMlpsYUhXMGtTaHI2cCIsInN1YiI6IjEiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.YKAzXzphU2TdACzyA5grULHquD28uWsttxPzglv8pEA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/expert/messages/1",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"expert",
+								"messages",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send a message to a user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxNDUxMDI1LCJleHAiOjE2NzE0NTQ2MjUsIm5iZiI6MTY3MTQ1MTAyNSwianRpIjoiT0NpTVhtTFFSN2NDZldRYiIsInN1YiI6IjEiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.cYEeCxb85U5dzeszm6gHorvOXFG15oqEr85bDmJKTS0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/expert/messages/send/6?message=Hello",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"expert",
+								"messages",
+								"send",
+								"6"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "Hello"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "average rate to the expert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxNDUxMDI1LCJleHAiOjE2NzE0NTQ2MjUsIm5iZiI6MTY3MTQ1MTAyNSwianRpIjoiT0NpTVhtTFFSN2NDZldRYiIsInN1YiI6IjEiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.cYEeCxb85U5dzeszm6gHorvOXFG15oqEr85bDmJKTS0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/expert/comments_reviews/avg",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"expert",
+								"comments_reviews",
+								"avg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all comments and rating of an expert by id Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxNDUxMDI1LCJleHAiOjE2NzE0NTQ2MjUsIm5iZiI6MTY3MTQ1MTAyNSwianRpIjoiT0NpTVhtTFFSN2NDZldRYiIsInN1YiI6IjEiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.cYEeCxb85U5dzeszm6gHorvOXFG15oqEr85bDmJKTS0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/expert/comments_reviews",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"expert",
+								"comments_reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change appointment status to done",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxNDY4MTAzLCJleHAiOjE2NzE0NzE3MDMsIm5iZiI6MTY3MTQ2ODEwMywianRpIjoicGI3MVlmRE1mV015V0VxTSIsInN1YiI6IjEiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.mTBmU-BAGG9NSky526rDBMjjRVYS7x2gu3Ep_mdYF1c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://consult.local/api/expert/appointment/status/18",
+							"protocol": "http",
+							"host": [
+								"consult",
+								"local"
+							],
+							"path": [
+								"api",
+								"expert",
+								"appointment",
+								"status",
+								"18"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
