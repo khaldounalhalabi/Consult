@@ -55,7 +55,7 @@ class ExpertController extends Controller
     {
         $rules = [
             'name' => 'string|min:3|max:255|required',
-            // 'photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'email' => 'email|string|min:3|required|unique:experts',
             'password' => 'string|min:6|max:255',
             'experience' => 'min:3|required',
@@ -174,7 +174,7 @@ class ExpertController extends Controller
     {
         $rules = [
             'name' => 'string|min:3|max:255',
-            // 'photo' => |image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'email' => 'email|string|min:3|unique:experts',
             'experience' => 'min:3',
             'phone' => 'string',

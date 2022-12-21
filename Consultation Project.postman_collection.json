@@ -52,7 +52,8 @@
 									"value": "0118888888"
 								}
 							]
-						}
+						},
+						"description": "**this api will register a new user**\n\n**and it is have a validation rules :**\n\n**'name' => 'string|min:3|max:255|required', 'email' => 'email|string|min:3|required|unique:users',****'password' => 'string|min:6|max:255',****'phone' => 'string|required',****'mobile' => 'string|nullable',**"
 					},
 					"response": []
 				},
@@ -62,7 +63,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://consult.local/api/user/login?email=fatima@email.com&password=1234567",
+							"raw": "http://consult.local/api/user/login?email=fatima@email.com&password=123456",
 							"protocol": "http",
 							"host": [
 								"consult",
@@ -80,10 +81,11 @@
 								},
 								{
 									"key": "password",
-									"value": "1234567"
+									"value": "123456"
 								}
 							]
-						}
+						},
+						"description": "this api is for user sign in\n\nit have the below rules :\n\n**StartFragment**\n\n**'email' => 'required|string|min:3',**               \n\n**'password' => 'required|string|min:3',**\n\n**EndFragment**"
 					},
 					"response": []
 				},
@@ -99,7 +101,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTM3NjU2NiwiZXhwIjoxNjcxMzgwMTY2LCJuYmYiOjE2NzEzNzY1NjYsImp0aSI6IkZYUXpaOWF2aGdZVEhkNlIiLCJzdWIiOiI2IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.AUPjDWs8_toFgVp5ZYL8yXnKSv7PFroOyUQIx8fJKzg",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTYyNjk4MiwiZXhwIjoxNjcxNjMwNTgyLCJuYmYiOjE2NzE2MjY5ODIsImp0aSI6IkFsdWNoenJxOUprc3lJMngiLCJzdWIiOiI1IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.plGvmn5v4phRS6PA1VFucPqk1dXzgg35lhaU7u9r53I",
 								"type": "text"
 							}
 						],
@@ -115,7 +117,8 @@
 								"user",
 								"logout"
 							]
-						}
+						},
+						"description": "This API is for user logout\n\nYou should send the token within the request"
 					},
 					"response": []
 				},
@@ -131,7 +134,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTM3NjkxNCwiZXhwIjoxNjcxMzgwNTE0LCJuYmYiOjE2NzEzNzY5MTQsImp0aSI6InJKMFoyajY5UjNTMkhrcE8iLCJzdWIiOiI2IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.MJywpABqu3tmIu_Ac9jPLVBDUF4dZKVmmVxVpgVUF1c",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxNjI3NzY2LCJleHAiOjE2NzE2MzEzNjYsIm5iZiI6MTY3MTYyNzc2NiwianRpIjoiaUtrbUs2N1phYnBseG51WCIsInN1YiI6IjUiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.5R3hHH4LGrVYnnb4h7p2bkx50fhWsBP1YkV6Yk-uMJM",
 								"type": "text"
 							}
 						],
@@ -147,7 +150,8 @@
 								"user",
 								"details"
 							]
-						}
+						},
+						"description": "This API is for getting the logged user details\n\nYou have to send the token within the rquest"
 					},
 					"response": []
 				},
@@ -197,7 +201,8 @@
 									"value": "0118888888"
 								}
 							]
-						}
+						},
+						"description": "This API is for Edit the logged user details\n\nYou should send the token within the request\n\nit have validation rules :\n\nStartFragment\n\n'name' => 'string|min:3|max:255|nullable',           \n\n'email' => 'email|string|min:3|nullable',           \n\n'phone' => 'string|nullable',           \n\n'mobile' => 'string|nullable',\n\nEndFragment"
 					},
 					"response": []
 				},
@@ -326,7 +331,8 @@
 									"value": "05:00"
 								}
 							]
-						}
+						},
+						"description": "This API is for register an expert with his work times\n\nthis API has validation rules\n\nStartFragment\n\n'name' => 'string|min:3|max:255|required',           \n\n'photo' =>'image|mimes:jpg,png,jpeg,gif,svg|max:2048',  'email' => 'email|string|min:3|required|unique:experts',    'password' => 'string|min:6|max:255',           \n\n'experience' => 'min:3|required',           \n\n'phone' => 'string|required',           \n\n'mobile' => 'string|nullable',           \n\n'country' => 'string|required',           \n\n'city' => 'string|required',           \n\n'street' => 'string|required',           \n\n'category_id' => 'integer',           \n\n'price' => 'numeric',            '\n\nsaturday_from' => 'nullable|date_format:h:i',            'saturday_to' => 'nullable|date_format:h:i',            'sunday_from' => 'nullable|date_format:h:i',            'sunday_to' => 'nullable|date_format:h:i',            'monday_from' => 'nullable|date_format:h:i',            'monday_to' => 'nullable|date_format:h:i',            'tuesday_from' => 'nullable|date_format:h:i',            'tuesday_to' => 'nullable|date_format:h:i',            'wednesday_from' => 'nullable|date_format:h:i',            'wednesday_to' => 'nullable|date_format:h:i',            'thursday_from' => 'nullable|date_format:h:i',            'thursday_to' => 'nullable|date_format:h:i',            'friday_from' => 'nullable|date_format:h:i',            'friday_to' => 'nullable|date_format:h:i',\n\nEndFragment"
 					},
 					"response": []
 				},
@@ -357,7 +363,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://consult.local/api/expert/login?email=ryan.johnathan@hotmail.com&password=123456",
+							"raw": "http://consult.local/api/expert/login?email=aiham@email.com&password=123456",
 							"protocol": "http",
 							"host": [
 								"consult",
@@ -371,14 +377,15 @@
 							"query": [
 								{
 									"key": "email",
-									"value": "ryan.johnathan@hotmail.com"
+									"value": "aiham@email.com"
 								},
 								{
 									"key": "password",
 									"value": "123456"
 								}
 							]
-						}
+						},
+						"description": "this api is for login as an expert\n\nit have validation rules :\n\nStartFragment\n\n'email' => 'required|string|min:3',               \n\n'password' => 'required|string|min:3',\n\nEndFragment"
 					},
 					"response": []
 				},
@@ -410,7 +417,8 @@
 								"expert",
 								"logout"
 							]
-						}
+						},
+						"description": "this api is for expert logout\n\nyou have send the token within the request"
 					},
 					"response": []
 				},
@@ -426,7 +434,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L3JlZ2lzdGVyIiwiaWF0IjoxNjcxNDY5MTQ2LCJleHAiOjE2NzE0NzI3NDYsIm5iZiI6MTY3MTQ2OTE0NiwianRpIjoieEFXWVY1QUVXTWR0TnNRZCIsInN1YiI6IjUiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.z6mi3OTzzLcjNlEoePCytcSQ65AN3TXpNK-ajawfJ1A",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxNjI3NzY2LCJleHAiOjE2NzE2MzEzNjYsIm5iZiI6MTY3MTYyNzc2NiwianRpIjoiaUtrbUs2N1phYnBseG51WCIsInN1YiI6IjUiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.5R3hHH4LGrVYnnb4h7p2bkx50fhWsBP1YkV6Yk-uMJM",
 								"type": "text"
 							}
 						],
@@ -442,7 +450,8 @@
 								"expert",
 								"details"
 							]
-						}
+						},
+						"description": "this api is to get expert details\n\nyou have to send the tokent within the request"
 					},
 					"response": []
 				},
@@ -573,7 +582,8 @@
 									"value": null
 								}
 							]
-						}
+						},
+						"description": "this api is to edit the expert details\n\nyou have to send the tokent within the request\n\nthis have the validation rules below :\n\nStartFragment\n\n'name' => 'string|min:3|max:255',           \n\n'photo' =>'image|mimes:jpg,png,jpeg,gif,svg|max:2048',  'email' => 'email|string|min:3|unique:experts',            'experience' => 'min:3',           \n\n'phone' => 'string',           \n\n'mobile' => 'string|nullable',           \n\n'country' => 'string',           \n\n'city' => 'string',           \n\n'street' => 'string',           \n\n'category_id' => 'integer',           \n\n'price' => 'numeric',           \n\n'saturday_from' => 'nullable|date_format:h:i',            'saturday_to' => 'nullable|date_format:h:i',            'sunday_from' => 'nullable|date_format:h:i',            'sunday_to' => 'nullable|date_format:h:i',            'monday_from' => 'nullable|date_format:h:i',            'monday_to' => 'nullable|date_format:h:i',            'tuesday_from' => 'nullable|date_format:h:i',            'tuesday_to' => 'nullable|date_format:h:i',            'wednesday_from' => 'nullable|date_format:h:i',            'wednesday_to' => 'nullable|date_format:h:i',            'thursday_from' => 'nullable|date_format:h:i',            'thursday_to' => 'nullable|date_format:h:i',            'friday_from' => 'nullable|date_format:h:i',            'friday_to' => 'nullable|date_format:h:i',\n\nEndFragment"
 					},
 					"response": []
 				}
@@ -605,7 +615,8 @@
 									"value": "Giovani Goodwin"
 								}
 							]
-						}
+						},
+						"description": "this api is for searching for an expert by name\n\nrules :\n\nStartFragment\n\n 'name' => 'string|min:3|required',\n\nEndFragment"
 					},
 					"response": []
 				},
@@ -624,7 +635,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvZXhwZXJ0L2xvZ2luIiwiaWF0IjoxNjcxMjg1NjcyLCJleHAiOjE2NzEyODkyNzIsIm5iZiI6MTY3MTI4NTY3MiwianRpIjoiUWllMHlDSE1mNEp5bkVncSIsInN1YiI6IjUiLCJwcnYiOiI4YmEyMGNmMTdlZTU2MTkzM2VmZDQ4MjdkNTJhZWExNTY1Mjk0YTk5In0.NKTBb-xgvGrG81Wa6JuAEW1rMJis4XHbMs_7sDSy0tU",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTYyNzcxMiwiZXhwIjoxNjcxNjMxMzEyLCJuYmYiOjE2NzE2Mjc3MTIsImp0aSI6IkNJSjJOY3pQMWNnQ0swWjMiLCJzdWIiOiI1IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.341CrxQcp_M7Ej8KmkaiVrayX3yDB0zv0L1AJgTsWBA",
 								"type": "text"
 							}
 						],
@@ -640,7 +651,8 @@
 								"user",
 								"categories"
 							]
-						}
+						},
+						"description": "this api return all categories exists"
 					},
 					"response": []
 				},
@@ -673,7 +685,8 @@
 								"expert_deatails",
 								"2"
 							]
-						}
+						},
+						"description": "this api will return expert details for the user\n\nyou have to send the expert id as it shown in the request"
 					},
 					"response": []
 				},
@@ -695,7 +708,8 @@
 								"experts",
 								"5"
 							]
-						}
+						},
+						"description": "this api will return all of the experts of a specific category\n\nyou have to send the category id as it shown in the request"
 					},
 					"response": []
 				},
@@ -728,7 +742,8 @@
 								"messages",
 								"1"
 							]
-						}
+						},
+						"description": "this api will return all the messages between the user and specific expert ordered by date descending (from latest to oldest )\n\nyou have to send the expert id as it shown in the request"
 					},
 					"response": []
 				},
@@ -768,7 +783,8 @@
 									"value": "Hello"
 								}
 							]
-						}
+						},
+						"description": "this api will send a message to a specific expert\n\nyou have to send the expert id within the request as it shown in the request"
 					},
 					"response": []
 				},
@@ -801,7 +817,8 @@
 								"comments_reviews",
 								"1"
 							]
-						}
+						},
+						"description": "this api will return all the comments and rates to an specific expert\n\nyou have to send the expert id within the request as it shown in the request"
 					},
 					"response": []
 				},
@@ -845,7 +862,8 @@
 									"value": "2"
 								}
 							]
-						}
+						},
+						"description": "this api will add a comment or rate to an specific expert\n\nyou have to send the expert id as it shown in the request\n\nrules :\n\nStartFragment\n\n'comment' => 'string|nullable',               \n\n'rate' => 'integer|min:0|max:5|nullable',\n\nEndFragment"
 					},
 					"response": []
 				},
@@ -879,7 +897,8 @@
 								"delete",
 								"49"
 							]
-						}
+						},
+						"description": "this api is for delete a comment\n\nyou have to send the comment id within the request as it shown in the request"
 					},
 					"response": []
 				},
@@ -913,7 +932,8 @@
 								"avg",
 								"1"
 							]
-						}
+						},
+						"description": "this api will return the average rate of an expert\n\nyou have to send the expert id within the request as it shown in the request"
 					},
 					"response": []
 				},
@@ -947,7 +967,8 @@
 								"add",
 								"1"
 							]
-						}
+						},
+						"description": "this api will add a specific expert to the favorite lis of the user\n\nyou have to send the expert id within the request"
 					},
 					"response": []
 				},
@@ -981,7 +1002,8 @@
 								"delete",
 								"1"
 							]
-						}
+						},
+						"description": "this api will delete an expert from user favorite list\n\nyou have to send the expert id within the request"
 					},
 					"response": []
 				},
@@ -1013,7 +1035,8 @@
 								"user",
 								"favorite"
 							]
-						}
+						},
+						"description": "this api will return the favorit list of the user"
 					},
 					"response": []
 				},
@@ -1021,7 +1044,18 @@
 					"name": "get expert appointment",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY29uc3VsdC5sb2NhbC9hcGkvdXNlci9sb2dpbiIsImlhdCI6MTY3MTYzOTA0NCwiZXhwIjoxNjcxNjQyNjQ0LCJuYmYiOjE2NzE2MzkwNDQsImp0aSI6Inp0TFN1ZjBBRnJHc0h5QUsiLCJzdWIiOiI1IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.zrZhkW69Sr8jG-NNCGQ-UrXHR8zYv5Asg5N9fNOmLXg",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://consult.local/api/user/appointments/get/1",
 							"protocol": "http",
@@ -1036,7 +1070,8 @@
 								"get",
 								"1"
 							]
-						}
+						},
+						"description": "this api will return the appointment list of a specific list so you can block it from the user so he can't select it\n\nyou have to send the expert id within the list"
 					},
 					"response": []
 				},
@@ -1080,7 +1115,8 @@
 									"value": "10:30"
 								}
 							]
-						}
+						},
+						"description": "this api will add an appointment to a specific expert\n\nyou have to send the expert api within the request as it shown before\n\nrules :\n\nStartFragment\n\n'date' => 'date|required',           \n\n'time' => 'date_format:h:i|required',\n\nEndFragment"
 					},
 					"response": []
 				}
@@ -1122,7 +1158,8 @@
 								"expert",
 								"appointments"
 							]
-						}
+						},
+						"description": "this api will return the expert appointments'"
 					},
 					"response": []
 				},
@@ -1155,7 +1192,8 @@
 								"appointment_details",
 								"7"
 							]
-						}
+						},
+						"description": "this api will return the appoinment details\n\nyou have to send the appointment id within the request"
 					},
 					"response": []
 				},
@@ -1188,7 +1226,8 @@
 								"messages",
 								"1"
 							]
-						}
+						},
+						"description": "this api will return all the messages between a specific user ordered by date descending (from latest to oldest )\n\nyou have to send the user id within the request"
 					},
 					"response": []
 				},
@@ -1228,7 +1267,8 @@
 									"value": "Hello"
 								}
 							]
-						}
+						},
+						"description": "this api will send a message to the user\n\nyou have to send the user id within the request"
 					},
 					"response": []
 				},
@@ -1261,7 +1301,8 @@
 								"comments_reviews",
 								"avg"
 							]
-						}
+						},
+						"description": "this api will return the average rate to the logged expert"
 					},
 					"response": []
 				},
@@ -1293,7 +1334,8 @@
 								"expert",
 								"comments_reviews"
 							]
-						}
+						},
+						"description": "this api will return all the comments and rating from users to the logged expert"
 					},
 					"response": []
 				},
@@ -1327,7 +1369,8 @@
 								"status",
 								"18"
 							]
-						}
+						},
+						"description": "this api will change the appointment status to dene and update the user and expert wallet\n\nyou have to send the appointment id within the request"
 					},
 					"response": []
 				}

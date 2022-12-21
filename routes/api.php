@@ -23,38 +23,41 @@ Route::namespace('App\Http\Controllers')->group(function () {
 
     Route::post('/user/register', 'UserController@register');
     Route::post('/user/login', 'UserController@login');
-    Route::post('/user/logout', 'UserController@logout');
-    Route::post('/user/details', 'UserController@details');
-    Route::post('user/edit', 'UserController@editDetails');
-    Route::get('/user/categories', 'UserController@indexCategory');
-    Route::get('/user/experts/{id}', 'UserController@indexExperts');
-    Route::post('/user/search', 'UserController@search');
-    Route::get('user/expert_deatails/{id}', 'UserController@expertDetails');
-    Route::get('/user/messages/{expert_id}', 'UserController@indexMessages');
-    Route::post('user/messages/send/{expert_id}', 'UserController@sendMessage');
-    Route::get ('user/comments_reviews/{expert_id}', 'UserController@getCommentsAndReviews');
-    Route::post('user/comments_reviews/add/{expert_id}', 'UserController@comment');
-    Route::post('user/comments_reviews/avg/{expert_id}', 'UserController@totalRate');
-    Route::delete('user/comment_reviews/delete/{comment_id}', 'UserController@deleteComment');
-    Route::post('user/favorite', 'UserController@indexFavorite');
-    Route::post('user/favorite/add/{expert_id}', 'UserController@addToFavorite');
-    Route::delete('user/favorite/delete/{expert_id}', 'UserController@removeFavorite');
-    Route::get('user/appointments/get/{expert_id}', 'UserController@getAppointments');
-    Route::post('user/appointment/add/{expert_id}', 'UserController@setAppointment');
+
+    Route::middleware('role:userapi')->group(function () {
+        Route::post('/user/logout', 'UserController@logout');
+        Route::post('/user/details', 'UserController@details');
+        Route::post('user/edit', 'UserController@editDetails');
+        Route::get('/user/categories', 'UserController@indexCategory');
+        Route::get('/user/experts/{id}', 'UserController@indexExperts');
+        Route::post('/user/search', 'UserController@search');
+        Route::get('user/expert_deatails/{id}', 'UserController@expertDetails');
+        Route::get('/user/messages/{expert_id}', 'UserController@indexMessages');
+        Route::post('user/messages/send/{expert_id}', 'UserController@sendMessage');
+        Route::get('user/comments_reviews/{expert_id}', 'UserController@getCommentsAndReviews');
+        Route::post('user/comments_reviews/add/{expert_id}', 'UserController@comment');
+        Route::post('user/comments_reviews/avg/{expert_id}', 'UserController@totalRate');
+        Route::delete('user/comment_reviews/delete/{comment_id}', 'UserController@deleteComment');
+        Route::post('user/favorite', 'UserController@indexFavorite');
+        Route::post('user/favorite/add/{expert_id}', 'UserController@addToFavorite');
+        Route::delete('user/favorite/delete/{expert_id}', 'UserController@removeFavorite');
+        Route::get('user/appointments/get/{expert_id}', 'UserController@getAppointments');
+        Route::post('user/appointment/add/{expert_id}', 'UserController@setAppointment');
+    });
 
 
-    Route::post('/expert/register', 'ExpertController@register');
-    Route::post('/expert/login', 'ExpertController@login');
-    Route::post('/expert/logout', 'ExpertController@logout');
-    Route::post('/expert/details', 'ExpertController@details');
-    Route::post('expert/edit', 'ExpertController@editDetails');
-    Route::get('/expert/appointments', 'ExpertController@getAppointments');
-    Route::get('/expert/appointment_details/{id}', 'ExpertController@getAppointmentDetails');
-    Route::get('/expert/messages/{user_id}', 'ExpertController@indexMessages');
-    Route::post('expert/messages/send/{user_id}', 'ExpertController@sendMessage');
-    Route::get('expert/comments_reviews', 'ExpertController@getCommentsAndReviews');
-    Route::post('expert/comments_reviews/avg', 'ExpertController@totalRate');
-    Route::get('expert/appointment/status/{appointment_id}', 'ExpertController@changeAppointmentStatus');
-
-
+    Route::middleware('role:expertapi')->group(function () {
+        Route::post('/expert/register', 'ExpertController@register');
+        Route::post('/expert/login', 'ExpertController@login');
+        Route::post('/expert/logout', 'ExpertController@logout');
+        Route::post('/expert/details', 'ExpertController@details');
+        Route::post('expert/edit', 'ExpertController@editDetails');
+        Route::get('/expert/appointments', 'ExpertController@getAppointments');
+        Route::get('/expert/appointment_details/{id}', 'ExpertController@getAppointmentDetails');
+        Route::get('/expert/messages/{user_id}', 'ExpertController@indexMessages');
+        Route::post('expert/messages/send/{user_id}', 'ExpertController@sendMessage');
+        Route::get('expert/comments_reviews', 'ExpertController@getCommentsAndReviews');
+        Route::post('expert/comments_reviews/avg', 'ExpertController@totalRate');
+        Route::get('expert/appointment/status/{appointment_id}', 'ExpertController@changeAppointmentStatus');
+    });
 });
