@@ -99,11 +99,11 @@ class ExpertController extends Controller
             $expert->street = $request->street;
             $expert->category_id = $request->category_id;
 
-            if ($request->hasFile('image') != null) {
-                $destenation_path = 'patients/images';
-                $image_name = $request->file('image')->getClientOriginalName();
-                $expert->image = $destenation_path . '/' . $image_name;
-                $path = $request->file('image')->storeAs('public/' . $destenation_path, $image_name);
+            if ($request->hasFile('photo') != null) {
+                $destenation_path = 'photos';
+                $image_name = $request->file('photo')->getClientOriginalName();
+                $path = $request->file('photo')->storeAs('public/' . $destenation_path, $image_name);
+                $expert->photo = $destenation_path . '/' . $image_name;
             }
 
             $expert->save();
@@ -234,11 +234,11 @@ class ExpertController extends Controller
                 $expert->category_id = $request->category_id;
             }
 
-            if ($request->hasFile('image') != null) {
-                $destenation_path = 'patients/images';
-                $image_name = $request->file('image')->getClientOriginalName();
-                $expert->image = $destenation_path . '/' . $image_name;
-                $path = $request->file('image')->storeAs('public/' . $destenation_path, $image_name);
+            if ($request->hasFile('photo') != null) {
+                $destenation_path = 'photos';
+                $image_name = $request->file('photo')->getClientOriginalName();
+                $path = $request->file('photo')->storeAs('public/' . $destenation_path, $image_name);
+                $expert->photo = $destenation_path . '/' . $image_name;
             }
 
             $expert->save();

@@ -46,9 +46,10 @@ Route::namespace('App\Http\Controllers')->group(function () {
     });
 
 
+    Route::post('/expert/register', 'ExpertController@register');
+    Route::post('/expert/login', 'ExpertController@login');
+
     Route::middleware('role:expertapi')->group(function () {
-        Route::post('/expert/register', 'ExpertController@register');
-        Route::post('/expert/login', 'ExpertController@login');
         Route::post('/expert/logout', 'ExpertController@logout');
         Route::post('/expert/details', 'ExpertController@details');
         Route::post('expert/edit', 'ExpertController@editDetails');
