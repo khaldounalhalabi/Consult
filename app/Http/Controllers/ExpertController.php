@@ -26,28 +26,27 @@ class ExpertController extends Controller
             if ($validator->fails()) {
                 return response()->json($validator->errors());
             }
-
-            if (Auth::guard('expertapi')->attempt([
+            $token = Auth::guard('expertapi')->attempt([
                 'email' => $request->email,
                 'password' => $request->password
-            ])) {
+            ]);
+
+            if ($token) {
+
                 $expert = Auth::guard('expertapi')->user();
-                $token = Auth::guard('expertapi')->attempt([
-                    'email' => $request->email,
-                    'password' => $request->password
-                ]);
+
                 return response()->json([
                     'message' => 'success',
-                    'user' => $expert,
+                    'expert' => $expert,
                     'category' => $expert->category,
                     'token' => $token
-                ]);
+                ] ,200);
             } else {
-                return response()->json(['message' => 'not authorized']);
+                return response()->json(['message' => 'wrong credentials'],401);
             }
         } catch (\Exception $e) {
             $error = $e->getMessage();
-            return response()->json(['message' => $error]);
+            return response()->json(['message' => $error],500);
         }
     }
 
@@ -140,7 +139,7 @@ class ExpertController extends Controller
                 'authorization' => [
                     'token' => $token,
                     'type' => 'Bearer',
-                ]
+                ] , 200
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -156,7 +155,7 @@ class ExpertController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Successfully logged out',
-        ]);
+        ] , 200);
     }
 
     public function details()
@@ -167,7 +166,7 @@ class ExpertController extends Controller
             "message" => 'success',
             "expert" => $expert,
             'work time' => $opened_time,
-        ]);
+        ] , 200);
     }
 
     public function editDetails(Request $request)
@@ -205,7 +204,8 @@ class ExpertController extends Controller
         }
 
         try {
-            $expert = Expert::find(Auth::guard('expertapi')->user()->id)->with('category')->first();
+            $id = Auth::guard('expertapi')->user()->id ;
+            $expert = Expert::find($id)->with('category')->first();
             if (isset($request->name)) {
                 $expert->name = $request->name;
             }
@@ -293,13 +293,12 @@ class ExpertController extends Controller
                 'status' => 'success',
                 'message' => 'Expert created successfully',
                 'expert' => $expert,
-                // 'category' => $expert->category
-            ]);
+            ] , 200);
         } catch (\Exception $e) {
             return response()->json([
                 'message' => 'there is been an error',
                 'error message' => $e->getMessage()
-            ]);
+            ] , 500);
         }
     }
 
@@ -313,7 +312,7 @@ class ExpertController extends Controller
         return response()->json([
             'message' => 'data has been retrieved successfully',
             'appointments' => $appointments
-        ]);
+        ] , 200);
     }
 
     public function getAppointmentDetails($id)
@@ -324,11 +323,12 @@ class ExpertController extends Controller
             return response()->json([
                 'message' => 'success',
                 'appointment' => $appointment,
-            ]);
+                'user' => $user ,
+            ] ,200);
         } else {
             return response()->json([
                 'message' => 'not authorized'
-            ]);
+            ] , 401);
         }
     }
 
@@ -342,9 +342,10 @@ class ExpertController extends Controller
 
         $user = User::find($appointment->user_id) ;
         $user->wallet = $user->wallet - $expert->price ;
+        $user->save() ;
         return response()->json([
             'message' => 'success',
-        ]);
+        ] , 200);
     }
 
     public function indexMessages($user_id)
@@ -357,7 +358,7 @@ class ExpertController extends Controller
         return response()->json([
             'message' => 'success',
             'messages' => $messages
-        ]);
+        ] , 200);
     }
 
     public function sendMessage(Request $request, $user_id)
@@ -366,8 +367,9 @@ class ExpertController extends Controller
         $message->body = $request->message;
         $message->expert_id = Auth::guard('expertapi')->user()->id;
         $message->user_id = $user_id;
+        $message->from = 'expert' ;
         $message->save();
-        return $this->indexMessages($user_id);
+        return response()->json(['message'=>'success'] , 200);
     }
 
     public function getCommentsAndReviews()
@@ -380,7 +382,7 @@ class ExpertController extends Controller
         return response()->json([
             'message' => 'success',
             'comments' => $comment_reviews,
-        ]);
+        ] , 200);
     }
     public function totalRate()
     {
@@ -395,6 +397,6 @@ class ExpertController extends Controller
         return response()->json([
             'message' => 'success',
             'average rate' => round($averageRate, 1)
-        ]);
+        ] , 200);
     }
 }

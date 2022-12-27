@@ -20,7 +20,7 @@ class RoleMiddleware
         if(!Auth::guard($guard)->check()){
             return response()->json([
                 'message' => 'not authorized'
-            ]) ;
+            ] , 401) ;
         }
         return $next($request);
     }
