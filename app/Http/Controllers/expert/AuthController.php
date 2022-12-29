@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\expert;
 
-use App\Models\Appointment;
-use App\Models\CommentReview;
+use App\Http\Controllers\Controller;
 use App\Models\Expert;
-use App\Models\Message;
 use App\Models\OpenedTime;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class ExpertController extends Controller
+class AuthController extends Controller
 {
     public function login(Request $request)
     {
@@ -26,27 +23,29 @@ class ExpertController extends Controller
             if ($validator->fails()) {
                 return response()->json($validator->errors());
             }
-            $token = Auth::guard('expertapi')->attempt([
+            $token = Auth::guard('expert')->attempt([
                 'email' => $request->email,
                 'password' => $request->password
             ]);
 
             if ($token) {
 
-                $expert = Auth::guard('expertapi')->user();
+                $expert = Auth::guard('expert')->user();
+                $category = $expert->category ;
+                $work_time = $expert->opened_time ;
 
                 return response()->json([
                     'message' => 'success',
                     'expert' => $expert,
-                    'category' => $expert->category,
+                    // 'category' => $expert->category,
                     'token' => $token
-                ] ,200);
+                ], 200);
             } else {
-                return response()->json(['message' => 'wrong credentials'],401);
+                return response()->json(['message' => 'wrong credentials'], 401);
             }
         } catch (\Exception $e) {
             $error = $e->getMessage();
-            return response()->json(['message' => $error],500);
+            return response()->json(['message' => $error], 500);
         }
     }
 
@@ -127,7 +126,7 @@ class ExpertController extends Controller
             $opened_time->save();
 
 
-            $token = Auth::guard('expertapi')->attempt([
+            $token = Auth::guard('expert')->attempt([
                 'email' => $request->email,
                 'password' => $request->password,
             ]);
@@ -139,7 +138,7 @@ class ExpertController extends Controller
                 'authorization' => [
                     'token' => $token,
                     'type' => 'Bearer',
-                ] , 200
+                ], 200
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -151,22 +150,22 @@ class ExpertController extends Controller
 
     public function logout()
     {
-        Auth::guard('expertapi')->logout();
+        Auth::guard('expert')->logout();
         return response()->json([
             'status' => 'success',
             'message' => 'Successfully logged out',
-        ] , 200);
+        ], 200);
     }
 
     public function details()
     {
-        $expert = Auth::guard('expertapi')->user();
+        $expert = Auth::guard('expert')->user();
         $opened_time = OpenedTime::where('expert_id', $expert->id)->get();
         return response()->json([
             "message" => 'success',
             "expert" => $expert,
             'work time' => $opened_time,
-        ] , 200);
+        ], 200);
     }
 
     public function editDetails(Request $request)
@@ -204,7 +203,7 @@ class ExpertController extends Controller
         }
 
         try {
-            $id = Auth::guard('expertapi')->user()->id ;
+            $id = Auth::guard('expert')->user()->id;
             $expert = Expert::find($id)->with('category')->first();
             if (isset($request->name)) {
                 $expert->name = $request->name;
@@ -293,110 +292,12 @@ class ExpertController extends Controller
                 'status' => 'success',
                 'message' => 'Expert created successfully',
                 'expert' => $expert,
-            ] , 200);
+            ], 200);
         } catch (\Exception $e) {
             return response()->json([
                 'message' => 'there is been an error',
                 'error message' => $e->getMessage()
-            ] , 500);
+            ], 500);
         }
-    }
-
-    public function getAppointments()
-    {
-        $expert = Auth::guard('expertapi')->user();
-        $appointments = Appointment::where('expert_id', $expert->id)
-            ->where('status', 'waiting')
-            ->with('user')
-            ->get();
-        return response()->json([
-            'message' => 'data has been retrieved successfully',
-            'appointments' => $appointments
-        ] , 200);
-    }
-
-    public function getAppointmentDetails($id)
-    {
-        $appointment = Appointment::find($id);
-        if (Auth::guard('expertapi')->user()->id == $appointment->expert_id) {
-            $user = $appointment->user;
-            return response()->json([
-                'message' => 'success',
-                'appointment' => $appointment,
-                'user' => $user ,
-            ] ,200);
-        } else {
-            return response()->json([
-                'message' => 'not authorized'
-            ] , 401);
-        }
-    }
-
-    public function changeAppointmentStatus($appointment_id)
-    {
-        $appointment = Appointment::find($appointment_id);
-        $appointment->status = 'done';
-        $appointment->save();
-        $expert = Auth::guard('expertapi')->user() ;
-        $expert->wallet = $expert->wallet + $expert->price ;
-
-        $user = User::find($appointment->user_id) ;
-        $user->wallet = $user->wallet - $expert->price ;
-        $user->save() ;
-        return response()->json([
-            'message' => 'success',
-        ] , 200);
-    }
-
-    public function indexMessages($user_id)
-    {
-        $expert_id = Auth::guard('expertapi')->user()->id;
-        $messages = Message::where('user_id', $user_id)
-            ->where('expert_id', $expert_id)
-            ->orderByDesc('created_at')
-            ->get();
-        return response()->json([
-            'message' => 'success',
-            'messages' => $messages
-        ] , 200);
-    }
-
-    public function sendMessage(Request $request, $user_id)
-    {
-        $message = new Message;
-        $message->body = $request->message;
-        $message->expert_id = Auth::guard('expertapi')->user()->id;
-        $message->user_id = $user_id;
-        $message->from = 'expert' ;
-        $message->save();
-        return response()->json(['message'=>'success'] , 200);
-    }
-
-    public function getCommentsAndReviews()
-    {
-        $expert_id = Auth::guard('expertapi')->user()->id;
-        $comment_reviews = CommentReview::where('expert_id', $expert_id)
-            ->orderByDesc('created_at')
-            ->with('user')
-            ->get();
-        return response()->json([
-            'message' => 'success',
-            'comments' => $comment_reviews,
-        ] , 200);
-    }
-    public function totalRate()
-    {
-        $expert_id = Auth::guard('expertapi')->user()->id;
-        $totalRates = CommentReview::where('expert_id', $expert_id)
-            ->sum('star_rating');
-        $ratesCount = CommentReview::where('expert_id', $expert_id)
-            ->count();
-
-        $averageRate = $totalRates / $ratesCount;
-
-        return response()->json([
-            'message' => 'success',
-            'average rate' => round($averageRate, 1)
-        ] , 200);
     }
 }

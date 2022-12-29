@@ -41,12 +41,12 @@ return [
             'provider' => 'users',
         ],
 
-        'userapi' => [
+        'user' => [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
 
-        'expertapi' => [
+        'expert' => [
             'driver' => 'jwt',
             'provider' => 'experts',
         ],
