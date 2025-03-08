@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Expert;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +19,8 @@ class AppointmentFactory extends Factory
     public function definition()
     {
         return [
-            'expert_id' => $this->faker->numberBetween(1, 4),
-            'user_id' => $this->faker->numberBetween(1, 4),
+            'expert_id' => Expert::factory(),
+            'user_id' => User::factory(),
             'date' => $this->faker->dateTimeThisMonth()->format('Y-m-d'),
             'time' => $this->faker->time('h:i:s'),
             'status' => implode($this->faker->randomElements([

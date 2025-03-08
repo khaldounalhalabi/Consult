@@ -9,16 +9,19 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
      * @return void
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call([
+            AppointmentSeeder::class,
+            CategorySeeder::class,
+            CommentReviewSeeder::class,
+            ExpertSeeder::class,
+            FavoriteSeeder::class,
+            MessageSeeder::class,
+            OpenedTimeSeeder::class,
+            UserSeeder::class,
+        ]);
     }
 }
